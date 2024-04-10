@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Data_Layer.Models.Product>
+
+@{
+    ViewData["Title"] = "GetAllProducts";
+    Layout = "_Layout1";
+}
+
+<style>
+    .row{
+        margin-top:100px;
+    }
+
+    .dashboard{
+        background-color: #F6F5F5;
+        height:500px;
+        border-radius:25px;
+        padding-top:10px;
+    }
+
+    .widget{
+        padding-left:15px;
+    }
+</style>
+
+
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="dashboard">
+                    <div class="widget">
+                    <div class="form-group">
+                        <label>Price Range:</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input price-filter" type="checkbox" id="priceRange1" value="0">
+                            <label class="form-check-label" for="priceRange1">0 - 99</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input price-filter" type="checkbox" id="priceRange2" value="100">
+                            <label class="form-check-label" for="priceRange2">100 - 199</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input price-filter" type="checkbox" id="priceRange3" value="200">
+                            <label class="form-check-label" for="priceRange3">200 - 299</label>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="widget">
+                        <h2>Widget 2</h2>
+                        <p>Content of Widget 2</p>
+                    </div>
+                    <div class="widget">
+                        <h2>Widget 3</h2>
+                        <p>Content of Widget 3</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                @foreach (var item in Model)
+                {
+                    <div class="product-card" data-price = "@item.Price">
+                    <div class="card allproduct" style="width: 18rem;">
+                        <img class="card-img-top" src=@item.ImageUrl alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.ProductName</h5>
+                            <p class="card-text">@item.Price</p>
+                            <a href="@Url.Action("Details","Product",new{id = item.ProductId})" class="btn btn-primary">View Detail</a>
+                            @if (ViewBag.Sessiondata == "null" || ViewBag.Sessiondata == null)
+                            {
+                                <a href="@Url.Action("Login","User",new{id = item.ProductId})" class="btn btn-primary">AddToCart</a>
+                            }else
+                            {
+                                <a href="@Url.Action("AddTocart","cart",new{id = item.ProductId})" class="btn btn-primary">AddToCart</a>
+                            }
+                        </div>
+                    </div>
+                    </div>
+                    
+                }
+            </div>
+        </div>
+    </div>
+

@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "_layout";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="form-outline mb-4">
+            <input type="text" id="form2Example1" name="id" class="form-control" />
+            <label class="form-label" for="form2Example1">Sub Category ID:</label>
+        </div>
+
+        <a id="link" href="#">
+            <button type="submit" class="btn btn-primary btn-block mb-4">Find</button>
+        </a>
+        
+    </div>
+</div>
+
+<script>
+    document.getElementById('link').addEventListener('click', function () {
+        var inputValue = document.getElementById('form2Example1').value;
+        var url = "@Url.Action("SDetail", "Categories", new { id = "inputValue" })".replace("inputValue", inputValue);
+        this.href = url;
+    });
+</script>
