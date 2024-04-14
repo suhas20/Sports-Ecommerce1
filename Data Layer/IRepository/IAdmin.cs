@@ -9,7 +9,7 @@ namespace Data_Layer.IRepository
 {
     public interface IAdmin
     {
-        Admin AddAdmin(Admin admin);
+        string AddAdmin(Admin admin);
         void UpdateAdminByID(int ID);
         string Login(string username, string password);
     }

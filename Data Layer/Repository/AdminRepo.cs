@@ -18,9 +18,22 @@ namespace Data_Layer.Repository
             _contex = contex;
         }
 
-        public Admin AddAdmin(Admin admin)
+        public string AddAdmin(Admin admin)
         {
-            throw new NotImplementedException();
+            var randomID = new Random();
+            var newAdmin = new Admin
+            {
+                AdminId = randomID.Next(),
+                AdminName = admin.AdminName,
+                AdminUsername = admin.AdminUsername,
+                AdminPassword = admin.AdminPassword,
+                Email = admin.Email
+            
+            };
+            _contex.Admins.Add(newAdmin);
+            _contex.SaveChanges();
+
+            return "Ok";
         }
 
         public string Login(string username, string password)

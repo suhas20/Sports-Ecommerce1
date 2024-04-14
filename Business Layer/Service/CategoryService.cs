@@ -1,4 +1,5 @@
 ﻿using Business_Layer.Iservice;
+using Data_Layer.IRepository;
 using Data_Layer.Models;
 using System;
 using System.Collections.Generic;
@@ -10,50 +11,50 @@ namespace Business_Layer.Service
 {
     public class CategoryService : ICategoryService
     {
-        private readonly ICategoryService _categoryService;
-        public CategoryService(ICategoryService categoryService)
+        private readonly ICategories _categories;
+        public CategoryService(ICategories categories)
         {
-            _categoryService = categoryService;
+            _categories = categories;
         }
-
+        
         public string AddCategory(Category cat)
         {
-            return _categoryService.AddCategory(cat);
+            return _categories.AddCategory(cat);
         }
 
         public string AddSubcategory(SubCategory subcat)
         {
-            return _categoryService.AddSubcategory(subcat);
+            return _categories.AddSubcategory(subcat);
         }
 
         public string DeleteCategory(int id)
         {
-            return (_categoryService.DeleteCategory(id));
+            return _categories.DeleteCategory(id);
         }
 
         public string DeleteSubcategory(int id)
         {
-            return _categoryService.DeleteSubcategory(id);
+            return _categories.DeleteSubcategory(id);
         }
 
         public List<Category> GetALLCategory()
         {
-            return _categoryService.GetALLCategory();
+            return _categories.GetALLCategory();
         }
 
         public List<SubCategory> GetALLSubcategories()
         {
-            return _categoryService.GetALLSubcategories();
+            return _categories.GetALLSubcategories();
         }
 
         public Category ViewCategory(int id)
         {
-            return _categoryService.ViewCategory(id);
+            return _categories.ViewCategory(id);
         }
 
         public SubCategory ViewSubcategory(int id)
         {
-            return _categoryService.ViewSubcategory(id);
+            return _categories.ViewSubcategory(id);
         }
     }
 }

@@ -19,6 +19,11 @@ namespace Sports_Ecommerce1.Controllers
             return View(data);
         }
 
+        public ActionResult AddC()
+        {
+            return View();
+        }
+        [HttpPost]
         public ActionResult AddC(Category cat)
         {
             var res = _categoryService.AddCategory(cat);
@@ -46,6 +51,11 @@ namespace Sports_Ecommerce1.Controllers
             return View(data);
         }
 
+        public ActionResult AddS()
+        {
+            return View();
+        }
+        [HttpPost]
         public ActionResult AddS(SubCategory scat)
         {
             var res = _categoryService.AddSubcategory(scat);

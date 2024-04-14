@@ -1,5 +1,6 @@
 ﻿using Business_Layer.Iservice;
 using Data_Layer.IRepository;
+using Data_Layer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,12 @@ namespace Business_Layer.Service
         {
             _admin = admin;
         }
+
+        public string Add(Admin admin)
+        {
+            return _admin.AddAdmin(admin);
+        }
+
         public string Login(string username, string password)
         {
             return _admin.Login(username, password);

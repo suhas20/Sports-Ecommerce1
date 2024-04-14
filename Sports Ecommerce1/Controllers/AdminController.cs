@@ -1,4 +1,5 @@
 ﻿using Business_Layer.Iservice;
+using Data_Layer.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Sports_Ecommerce1.Controllers
@@ -38,6 +39,27 @@ namespace Sports_Ecommerce1.Controllers
                 ViewBag.message = "Invalid Password or username";
             }
             return View();
+        }
+
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(Admin admin)
+        {
+            var res = _service.Add(admin);
+            if (res != "Ok") return View();
+            var message = "New admin Added";
+            ViewBag.message = message;
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            HttpContext.Session.SetString("username", "null");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
