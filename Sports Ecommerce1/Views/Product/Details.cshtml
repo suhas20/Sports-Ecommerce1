@@ -35,8 +35,16 @@
 					<h4 class="price">current price: <span>@Html.DisplayFor(model => model.Price)</span></h4>
 					<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
 					<div class="action">
+						@if (ViewBag.Sessiondata == "null" || ViewBag.Sessiondata == null)
+						{
+							<a href="@Url.Action("Login","User")" class="add-to-cart btn btn-primary">AddToCart</a>
+						}else
+						{
 						<a href="@Url.Action("AddTocart","cart",new{id = Model.ProductId})" class="add-to-cart btn btn-primary">AddToCart</a>
+						}
+						
 						<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+
 					</div>
 				</div>
 			</div> 

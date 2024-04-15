@@ -41,6 +41,8 @@ namespace Sports_Ecommerce1.Controllers
         // GET: Product/Details/5
         public ActionResult Details(int id)
         {
+            var sessiondata = HttpContext.Session.GetString("username");
+            ViewBag.Sessiondata = sessiondata;
             var data = _productService.ProductDetails(id);
             return View(data);
         }
