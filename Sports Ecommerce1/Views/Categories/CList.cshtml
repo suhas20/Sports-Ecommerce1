@@ -2,9 +2,6 @@
 @{
     Layout = "_layout";
 }
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -21,15 +18,12 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CategoryId)
+                <a href="@Url.Action("CDetail","Categories",new{id = item.CategoryId})">
+                     @Html.DisplayFor(modelItem => item.CategoryId)
+                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
 }
