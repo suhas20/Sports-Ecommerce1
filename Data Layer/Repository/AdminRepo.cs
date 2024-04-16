@@ -36,6 +36,12 @@ namespace Data_Layer.Repository
             return "Ok";
         }
 
+        public Admin GetAdminDetails(string username)
+        {
+            var data = _contex.Admins.FirstOrDefault(x => x.AdminUsername == username);
+            return data;
+        }
+
         public string Login(string username, string password)
         {
             var data = _contex.Admins.FirstOrDefault(x => x.AdminUsername == username && x.AdminPassword == password);

@@ -6,7 +6,7 @@
 }
 
 <style>
-    .row{
+    .filters {
         margin-top:100px;
     }
 
@@ -26,7 +26,7 @@
 
 
 <div class="container">
-        <div class="row">
+        <div class="row filters">
             <div class="col-3">
                 <div class="dashboard">
                     <div class="widget">
@@ -34,44 +34,49 @@
                         <label>Price Range:</label><br>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input price-filter" type="checkbox" id="priceRange1" value="0">
-                            <label class="form-check-label" for="priceRange1">0 - 99</label>
+                            <label class="form-check-label" for="priceRange1"><i class="fa-solid fa-sterling-sign fa-xs"></i> 0 - <99</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input price-filter" type="checkbox" id="priceRange2" value="100">
-                            <label class="form-check-label" for="priceRange2">100 - 199</label>
+                            <label class="form-check-label" for="priceRange2"><i class="fa-solid fa-sterling-sign fa-xs"></i> 100 - 199</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input price-filter" type="checkbox" id="priceRange3" value="200">
-                            <label class="form-check-label" for="priceRange3">200 - 299</label>
+                            <label class="form-check-label" for="priceRange3"><i class="fa-solid fa-sterling-sign fa-xs"></i> 200 - 299</label>
                         </div>
                     </div>
                     </div>
                     
                 </div>
             </div>
-            <div class="col-8">
-                @foreach (var item in Model)
-                {
-                    <div class="product-card" data-price = "@item.Price">
-                    <div class="card allproduct" style="width: 18rem;">
-                        <img class="card-img-top" src=@item.ImageUrl alt="Card image cap">
+           <div class="col-9">
+    <div class="row product">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="product-card" data-price="@item.Price">
+                    <div class="card allproduct">
+                        <img class="card-img-top" src="@item.ImageUrl" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">@item.ProductName</h5>
-                            <p class="card-text">@item.Price</p>
-                            <a href="@Url.Action("Details","Product",new{id = item.ProductId})" class="btn btn-primary">View Detail</a>
+                            <p class="card-text"><i class="fa-solid fa-sterling-sign fa-xs"></i> @item.Price</p>
+                            <a href="@Url.Action("Details", "Product", new { id = item.ProductId })" class="btn btn-primary">View Detail</a>
                             @if (ViewBag.Sessiondata == "null" || ViewBag.Sessiondata == null)
                             {
-                                <a href="@Url.Action("Login","User",new{id = item.ProductId})" class="btn btn-primary">AddToCart</a>
-                            }else
+                                <a href="@Url.Action("Login", "User", new { id = item.ProductId })" class="btn btn-primary">AddToCart</a>
+                            }
+                            else
                             {
-                                <a href="@Url.Action("AddTocart","cart",new{id = item.ProductId})" class="btn btn-primary">AddToCart</a>
+                                <a href="@Url.Action("AddTocart", "cart", new { id = item.ProductId })" class="btn btn-primary">AddToCart</a>
                             }
                         </div>
                     </div>
-                    </div>
-                    
-                }
+                </div>
             </div>
+        }
+    </div>
+</div>
+
         </div>
     </div>
 

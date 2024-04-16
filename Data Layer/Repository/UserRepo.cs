@@ -35,6 +35,12 @@ namespace Data_Layer.Repository
             return usr;
         }
 
+        public User GetUserDetails(string username)
+        {
+            var data = _context.Users.FirstOrDefault(x => x.UserName == username);
+            return data;
+        }
+
         public string Login(string username, string password)
         {
             var usr = (from u in _context.Users

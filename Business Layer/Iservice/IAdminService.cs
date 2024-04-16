@@ -11,5 +11,6 @@ namespace Business_Layer.Iservice
     {
         string Login(string username, string password);
         string Add(Admin admin);
+        Admin getAdminDetails(string username);
     }
 }

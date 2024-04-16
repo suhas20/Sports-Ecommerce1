@@ -16,5 +16,6 @@ namespace Business_Layer.Iservice
         User GetUser(string username);
         void updateUser(User user);
         User RegisterUser(User user);
+        User GetUserDetails(string username);
     }
 }

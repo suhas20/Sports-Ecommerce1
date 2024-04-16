@@ -12,5 +12,6 @@ namespace Data_Layer.IRepository
         string AddAdmin(Admin admin);
         void UpdateAdminByID(int ID);
         string Login(string username, string password);
+        Admin GetAdminDetails(string username);
     }
 }

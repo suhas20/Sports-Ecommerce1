@@ -61,5 +61,13 @@ namespace Sports_Ecommerce1.Controllers
             HttpContext.Session.SetString("username", "null");
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult GetDetails(string username)
+        {
+            var sessiondata = HttpContext.Session.GetString("username");
+            ViewBag.Sessiondata = sessiondata;
+            var data = _service.getAdminDetails(username);
+            return View(data);
+        }
     }
 }

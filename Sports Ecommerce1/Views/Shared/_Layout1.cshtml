@@ -187,16 +187,16 @@
                                 {
                                     if (count < 8)
                                     {
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">@nav.Key &nbsp<span class="caret"></span></a>
-                                            @*<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">@nav.Key &nbsp<span class="caret"></span></button>*@
-                                            <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                                @foreach (var subnav in nav.Value)
+                                                    <li class="nav-item dropdown">
+                                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">@nav.Key &nbsp<span class="caret"></span></a>
+                                                        @*<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">@nav.Key &nbsp<span class="caret"></span></button>*@
+                                                        <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                                            @foreach (var subnav in nav.Value)
                                                 {
-                                                    <li><a class="dropdown-item" href="@Url.Action("GetProductsByCategory","Product",new { categoryName = subnav.Trim(), category = nav.Key})">@subnav.Trim()</a></li>
+                                                                <li><a class="dropdown-item" href="@Url.Action("GetProductsByCategory","Product",new { categoryName = subnav.Trim(), category = nav.Key})">@subnav.Trim()</a></li>
                                                 }
-                                            </ul>
-                                        </li>
+                                                        </ul>
+                                                    </li>
                                                             
                                         count++;
                                     }
@@ -258,7 +258,9 @@
                                         </li>
                                         }else
                                         {
-                                            <p>@ViewBag.Sessiondata &nbsp</p>
+                                            <a href="@Url.Action("details","User",new{username = ViewBag.Sessiondata})">
+                                                <p>@ViewBag.Sessiondata &nbsp</p>
+                                            </a>
                                             <li><a href="@Url.Action("Logout","User")">Logout</a></li>
                                         }
                                         
@@ -272,7 +274,22 @@
             </div>
         </nav>
     </header>
-
+    @if(ViewBag.Sessiondata == "null" || ViewBag.Sessiondata == null)
+    {
+        <section id="yearly-sale" class="bg-light-blue overflow-hidden mt-5 padding-xlarge" style="background-image: url('https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fHB1bWElMjBzaG9lfGVufDB8fDB8fHww'); background-size: cover; background-position: center;">
+            <div class="row d-flex flex-wrap align-items-center">
+                <div class="col-md-6 col-sm-12">
+                    <div class="text-content offset-4 padding-medium">
+                        <h3>10% off</h3>
+                        <h2 class="display-2 pb-5 text-uppercase text-dark">New year sale</h2>
+                        <a href="@Url.Action("Login","User")" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Sale</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                </div>
+            </div>
+        </section>
+    }
     @RenderBody()
     @*<section id="billboard" class="position-relative overflow-hidden bg-light-blue">
         <div class="swiper main-swiper">

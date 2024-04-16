@@ -27,6 +27,11 @@ namespace Business_Layer.Service
             return _user.GetUser(username);
         }
 
+        public User GetUserDetails(string username)
+        {
+            return _user.GetUserDetails(username);
+        }
+
         public string Login(string username, string password)
         {
             return _user.Login(username, password);

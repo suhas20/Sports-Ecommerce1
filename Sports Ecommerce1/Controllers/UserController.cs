@@ -102,5 +102,13 @@ namespace Sports_Ecommerce1.Controllers
                 }
             return View();
         }
+
+        public ActionResult details(string username)
+        {
+            var sessiondata = HttpContext.Session.GetString("username");
+            ViewBag.Sessiondata = sessiondata;
+            var res = _service.GetUserDetails(username);
+            return View(res);
+        }
     }
 }

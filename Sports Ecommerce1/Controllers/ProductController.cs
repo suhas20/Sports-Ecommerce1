@@ -26,6 +26,8 @@ namespace Sports_Ecommerce1.Controllers
 
         public async Task<ActionResult> GetAllProducts()
         {
+            var sessiondata = HttpContext.Session.GetString("username");
+            ViewBag.Sessiondata = sessiondata;
             List<Product> List = await _productService.GetAllProducts();
             return View(List);
         }

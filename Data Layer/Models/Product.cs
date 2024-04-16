@@ -29,5 +29,4 @@ public partial class Product
     public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
 
     public virtual ICollection<Favourite> Favourites { get; set; } = new List<Favourite>();
-    public virtual ICollection<Helper> Helpers { get; set; } = new List<Helper>();
 }

@@ -23,6 +23,11 @@ namespace Business_Layer.Service
             return _admin.AddAdmin(admin);
         }
 
+        public Admin getAdminDetails(string username)
+        {
+            return _admin.GetAdminDetails(username);
+        }
+
         public string Login(string username, string password)
         {
             return _admin.Login(username, password);
